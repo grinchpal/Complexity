@@ -124,11 +124,28 @@ function complexity(filePath)
 			builder.ParameterCount = node.params.length;
 
 			builders[builder.FunctionName] = builder;
-		}
+
+			traverseWithParents(node, function(node) {
+				if(isDecision(node)) {
+					builder.SimpleCyclomaticComplexity ++;
+				
+				var count = [];
+				var counter = 0;
+					traverseWithParents(node, function(node) {
+						if(node.type == 'LogicalExpression'){
+								counter++;
+						}
+					});
+					count.push(counter);
+
+					builder.MaxConditions = Math.max(count);
+				}
+			});
 
 		if(node.type === 'Literal') {
 			fileBuilder.Strings ++;
 		}
+	}
 
 	});
 
