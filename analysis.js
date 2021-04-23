@@ -99,6 +99,8 @@ function traverseWithParents(object, visitor)
     }
 }
 
+var final =0;
+
 function complexity(filePath)
 {
 	var buf = fs.readFileSync(filePath, "utf8");
@@ -142,13 +144,20 @@ function complexity(filePath)
 				}
 			});
 
+		}
+
 		if(node.type === 'Literal') {
 			fileBuilder.Strings ++; 
 		}
-	}
 
 	});
 
+	final = fileBuilder.Strings;
+
+}
+
+function getStrings(){
+	return final;
 }
 
 // Helper function for counting children of node.
@@ -298,3 +307,4 @@ mints.toString().split(".")[0] + " " + szmin;
       }
   }
  exports.complexity = complexity;
+ exports.getStrings=getStrings;
