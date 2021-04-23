@@ -147,7 +147,7 @@ function complexity(filePath)
 		}
 
 		if(node.type === 'Literal') {
-			fileBuilder.Strings ++; 
+			fileBuilder.Strings ++;  
 		}
 
 	});
