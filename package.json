@@ -21,6 +21,7 @@
     "esprima": "^4.0.1"
   },
   "dependencies": {
+    "bob": "^2.5.0",
     "chai": "^4.1.2",
     "mocha": "^6.0.0",
     "wheel": "^1.0.0"
